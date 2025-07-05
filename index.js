@@ -1,8 +1,10 @@
+import 'dotenv/config'; // Automatically loads environment variables from .env file
 import express from 'express';
 
 const app = express();
 
-const port = 3000;
+const port = process.env.PORT || 3000;
+const hostname = process.env.HOSTNAME || '127.0.0.1';
 
 // app.get("/", (req, res) => {
 //     res.send("Hello, from Arindam!");
@@ -77,7 +79,7 @@ app.delete('/cars/:id', (req, res) => {
 
 
 
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+app.listen(port, hostname, () => {
+  console.log(`Server is running on http://${hostname}:${port}`);
 });
 
